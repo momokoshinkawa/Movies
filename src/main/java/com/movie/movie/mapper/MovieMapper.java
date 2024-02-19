@@ -18,7 +18,10 @@ public interface MovieMapper {
     @Select("SELECT * FROM movies WHERE title LIKE CONCAT(#{titleStartsWith}, '%')")
     List<Movie> findMoviesByTitleStartsWith(String titleStartsWith);
 
-    @Select("SELECT * FROM movies WHERE release_year BETWEEN #{fromYear} AND #{toYear}")
+    @Select("SELECT * FROM movies WHERE releaseYear BETWEEN #{fromYear} AND #{toYear}")
     List<Movie> findMoviesByYearRange(Integer fromYear, Integer toYear);
 }
+
+
+
 

@@ -3,12 +3,12 @@ package com.movie.movie.entity;
 public class Movie {
     private int id;
     private String title;
-    private int release_year;
+    private int releaseYear;
 
-    public Movie(int id, String title, int release_year) {
+    public Movie(int id, String title, int releaseYear) {
         this.id = id;
         this.title = title;
-        this.release_year = release_year;
+        this.releaseYear = releaseYear;
 
 
     }
@@ -29,14 +29,13 @@ public class Movie {
         this.title = title;
     }
 
-    public Integer getRelease_year() {
-        return release_year;
+    public Integer getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setRelease_year(int release_year) {
-        this.release_year = release_year;
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
     }
 }
-
 
 
