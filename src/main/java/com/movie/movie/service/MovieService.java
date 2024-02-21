@@ -15,14 +15,25 @@ public class MovieService {
     private final MovieMapper movieMapper;
 
     public MovieService(MovieMapper movieMapper) {
-
         this.movieMapper = movieMapper;
     }
 
-    public List<Movie> findAll() {
 
+    public List<Movie> getMovies(String titleStartsWith, Integer fromYear, Integer toYear) {
+        if (titleStartsWith != null) {
+            return findMoviesByTitleStartsWith(titleStartsWith);
+        } else if (fromYear != null && toYear != null) {
+            return findMoviesByYearRange(fromYear, toYear);
+        } else {
+            return findAll();
+        }
+    }
+
+
+    public List<Movie> findAll() {
         return this.movieMapper.findAll();
     }
+
 
     public Movie findMovieById(Integer id) throws MovieNotFoundException {
         Optional<Movie> movie = this.movieMapper.findById(id);
@@ -33,26 +44,17 @@ public class MovieService {
         }
     }
 
-    public List<Movie> findMoviesByTitleStartsWith(String titleStartsWith) throws MovieNotFoundException {
-        List<Movie> movies = this.movieMapper.findMoviesByTitleStartsWith(titleStartsWith);
-        if (!movies.isEmpty()) {
-            return movies;
-        } else {
-            throw new MovieNotFoundException("Movie not found");
-        }
+
+    public List<Movie> findMoviesByTitleStartsWith(String titleStartsWith) {
+        return this.movieMapper.findMoviesByTitleStartsWith(titleStartsWith);
     }
 
-    public List<Movie> findMoviesByYearRange(Integer fromYear, Integer toYear) throws InvalidYearRangeException, MovieNotFoundException {
+
+    public List<Movie> findMoviesByYearRange(Integer fromYear, Integer toYear) throws InvalidYearRangeException {
         if (fromYear >= toYear || fromYear < 0 || toYear < 0) {
             throw new InvalidYearRangeException("Invalid year");
-        }
-
-        List<Movie> movies = this.movieMapper.findMoviesByYearRange(fromYear, toYear);
-        if (!movies.isEmpty()) {
-            return movies;
         } else {
-            throw new MovieNotFoundException("Movie not found");
+            return this.movieMapper.findMoviesByYearRange(fromYear, toYear);
         }
     }
 }
-

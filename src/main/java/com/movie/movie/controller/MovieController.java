@@ -26,13 +26,6 @@ public class MovieController {
     public List<Movie> getMovies(@RequestParam(required = false) String titleStartsWith,
                                  @RequestParam(required = false) Integer fromYear,
                                  @RequestParam(required = false) Integer toYear) {
-        if (titleStartsWith != null) {
-            return movieService.findMoviesByTitleStartsWith(titleStartsWith);
-        } else if (fromYear != null && toYear != null) {
-            return movieService.findMoviesByYearRange(fromYear, toYear);
-        } else {
-            return movieService.findAll();
-        }
+        return movieService.getMovies(titleStartsWith, fromYear, toYear);
     }
 }
-

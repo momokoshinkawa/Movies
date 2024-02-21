@@ -37,5 +37,3 @@ public class Movie {
         this.releaseYear = releaseYear;
     }
 }
-
-
