@@ -20,20 +20,23 @@ public class MovieService {
 
 
     public List<Movie> getMovies(String titleStartsWith, Integer fromYear, Integer toYear) {
-        if (titleStartsWith != null) {
-            return findMoviesByTitleStartsWith(titleStartsWith);
-        } else if (fromYear != null && toYear != null) {
-            return findMoviesByYearRange(fromYear, toYear);
+        if (titleStartsWith != null || (fromYear != null && toYear != null)) {
+            return findMoviesByTitleOrYear(titleStartsWith, fromYear, toYear);
         } else {
             return findAll();
         }
     }
 
-
     public List<Movie> findAll() {
         return this.movieMapper.findAll();
     }
 
+    public List<Movie> findMoviesByTitleOrYear(String titleStartsWith, Integer fromYear, Integer toYear) throws InvalidYearRangeException {
+        if (fromYear != null && toYear != null && fromYear > toYear) {
+            throw new InvalidYearRangeException("invalid year range");
+        }
+        return this.movieMapper.findMoviesByTitleOrYear(titleStartsWith, fromYear, toYear);
+    }
 
     public Movie findMovieById(Integer id) throws MovieNotFoundException {
         Optional<Movie> movie = this.movieMapper.findById(id);
@@ -43,18 +46,5 @@ public class MovieService {
             throw new MovieNotFoundException("movie not found");
         }
     }
-
-
-    public List<Movie> findMoviesByTitleStartsWith(String titleStartsWith) {
-        return this.movieMapper.findMoviesByTitleStartsWith(titleStartsWith);
-    }
-
-
-    public List<Movie> findMoviesByYearRange(Integer fromYear, Integer toYear) throws InvalidYearRangeException {
-        if (fromYear >= toYear || fromYear < 0 || toYear < 0) {
-            throw new InvalidYearRangeException("Invalid year");
-        } else {
-            return this.movieMapper.findMoviesByYearRange(fromYear, toYear);
-        }
-    }
 }
+

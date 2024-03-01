@@ -1,23 +1,21 @@
 package com.movie.movie.entity;
 
 public class Movie {
-    private int id;
+    private Integer id;
     private String title;
-    private int releaseYear;
+    private Integer releaseYear;
 
-    public Movie(int id, String title, int releaseYear) {
+    public Movie(Integer id, String title, Integer releaseYear) {
         this.id = id;
         this.title = title;
         this.releaseYear = releaseYear;
-
-
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -33,7 +31,8 @@ public class Movie {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
     }
 }
+
