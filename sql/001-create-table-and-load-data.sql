@@ -9,7 +9,3 @@ CREATE TABLE movies (
 
 INSERT INTO movies (title, release_year) VALUES ('Back to the Future', 1985);
 INSERT INTO movies (title, release_year) VALUES ('Titanic', 1997);
-
-
-
-

@@ -5,5 +5,3 @@ public class InvalidYearRangeException extends RuntimeException {
         super(message);
     }
 }
-
-
