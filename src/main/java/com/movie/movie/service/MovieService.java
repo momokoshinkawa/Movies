@@ -46,5 +46,11 @@ public class MovieService {
             throw new MovieNotFoundException("movie not found");
         }
     }
+
+    public Movie insert(String title, Integer releaseYear) {
+        Movie movie = new Movie(null, title, releaseYear);
+        movieMapper.insert(movie);
+        return movie;
+    }
 }
 

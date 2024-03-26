@@ -11,6 +11,12 @@ public class Movie {
         this.releaseYear = releaseYear;
     }
 
+    public Movie(String title, Integer releaseYear) {
+        this.id = null;
+        this.title = title;
+        this.releaseYear = releaseYear;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -35,4 +41,5 @@ public class Movie {
         this.releaseYear = releaseYear;
     }
 }
+
 
