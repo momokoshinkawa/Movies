@@ -11,5 +11,3 @@ public class MoveRegisterResponse {
         return message;
     }
 }
-
-

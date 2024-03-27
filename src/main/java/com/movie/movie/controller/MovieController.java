@@ -37,4 +37,3 @@ public class MovieController {
         return ResponseEntity.created(location).body(body);
     }
 }
-
