@@ -12,7 +12,6 @@ public class Movie {
     }
 
     public Movie(String title, Integer releaseYear) {
-        this.id = null;
         this.title = title;
         this.releaseYear = releaseYear;
     }
