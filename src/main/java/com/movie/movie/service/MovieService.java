@@ -52,4 +52,16 @@ public class MovieService {
         movieMapper.insert(movie);
         return movie;
     }
+
+    public void update(Integer id, String title, Integer releaseYear) throws MovieNotFoundException {
+        Movie movie = findMovieById(id);
+        movie.setTitle(title);
+        movie.setReleaseYear(releaseYear);
+        movieMapper.update(movie);
+    }
+
+    public void delete(Integer id) throws MovieNotFoundException {
+        Movie movie = findMovieById(id);
+        movieMapper.delete(movie.getId());
+    }
 }

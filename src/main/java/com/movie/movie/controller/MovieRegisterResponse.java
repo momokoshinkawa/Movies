@@ -1,9 +1,9 @@
 package com.movie.movie.controller;
 
-public class MoveRegisterResponse {
+public class MovieRegisterResponse {
     private String message;
 
-    public MoveRegisterResponse(String message) {
+    public MovieRegisterResponse(String message) {
         this.message = message;
     }
 
