@@ -1,9 +1,9 @@
-package com.movie.movie.controller;
+package com.movie.movie.controller.response;
 
-public class MovieRegisterResponse {
+public class MovieDeleteResponse {
     private String message;
 
-    public MovieRegisterResponse(String message) {
+    public MovieDeleteResponse(String message) {
         this.message = message;
     }
 

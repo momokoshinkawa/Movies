@@ -1,4 +1,4 @@
-package com.movie.movie.controller;
+package com.movie.movie.controller.request;
 
 public class MovieRegisterRequest {
     private String title;

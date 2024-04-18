@@ -54,14 +54,14 @@ public class MovieService {
     }
 
     public void update(Integer id, String title, Integer releaseYear) throws MovieNotFoundException {
-        Movie movie = findMovieById(id);
+        Movie movie = new Movie(id, title, releaseYear);
         movie.setTitle(title);
         movie.setReleaseYear(releaseYear);
         movieMapper.update(movie);
     }
 
     public void delete(Integer id) throws MovieNotFoundException {
-        Movie movie = findMovieById(id);
+        Movie movie = new Movie(id, null, null);
         movieMapper.delete(movie.getId());
     }
 }
