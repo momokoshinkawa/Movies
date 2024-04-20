@@ -53,15 +53,22 @@ public class MovieService {
         return movie;
     }
 
-    public void update(Integer id, String title, Integer releaseYear) throws MovieNotFoundException {
-        Movie movie = new Movie(id, title, releaseYear);
+    public void update(Integer id, String title, Integer releaseYear) {
+        Optional<Movie> optionalMovie = movieMapper.findById(id);
+        if (optionalMovie.isEmpty()) {
+            throw new MovieNotFoundException("movie not found");
+        }
+        Movie movie = optionalMovie.get();
         movie.setTitle(title);
         movie.setReleaseYear(releaseYear);
         movieMapper.update(movie);
     }
 
-    public void delete(Integer id) throws MovieNotFoundException {
-        Movie movie = new Movie(id, null, null);
-        movieMapper.delete(movie.getId());
+    public void delete(Integer id) {
+        Optional<Movie> movie = this.movieMapper.findById(id);
+        if (movie.isEmpty()) {
+            throw new MovieNotFoundException("movie not found");
+        }
+        this.movieMapper.delete(id);
     }
 }
