@@ -1,6 +1,7 @@
 package com.movie.movie.mapper;
 
 import com.movie.movie.entity.Movie;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -24,4 +25,10 @@ public interface MovieMapper {
     @Insert("INSERT INTO movies (title, release_year) VALUES (#{title}, #{releaseYear})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insert(Movie movie);
+
+    @Insert("UPDATE movies SET title = #{title}, release_year = #{releaseYear} WHERE id = #{id}")
+    void update(Movie movie);
+
+    @Delete("DELETE FROM movies WHERE id = #{id}")
+    void delete(Integer id);
 }
