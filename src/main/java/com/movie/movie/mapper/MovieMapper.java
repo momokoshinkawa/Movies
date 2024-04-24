@@ -20,7 +20,7 @@ public interface MovieMapper {
     List<Movie> findAll();
 
     @Select("SELECT * FROM movies WHERE title LIKE CONCAT(#{titleStartsWith}, '%') OR release_year BETWEEN #{fromYear} AND #{toYear}")
-    List<Movie> validateYearRange(Integer fromYear, Integer toYear);
+    List<Movie> findMoviesByTitleOrYear(String titleStartsWith, Integer fromYear, Integer toYear);
 
     @Insert("INSERT INTO movies (title, release_year) VALUES (#{title}, #{releaseYear})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
