@@ -18,21 +18,22 @@ public class MovieService {
         this.movieMapper = movieMapper;
     }
 
-  
+
     public List<Movie> getMovies(String titleStartsWith, Integer fromYear, Integer toYear) {
-        if (titleStartsWith != null || (fromYear != null && toYear != null)) 
-            return this.movieMapper.findMoviesByTitleOrYear(titleStartsWith, fromYear, toYear);
+        if (titleStartsWith != null || (fromYear != null && toYear != null)) {
+            return findMoviesByTitleOrYear(titleStartsWith, fromYear, toYear);
         } else {
             return findAll();
         }
-   
-  
+    }
+
+
     public List<Movie> findAll() {
         return this.movieMapper.findAll();
     }
 
-  
-　　public List<Movie> findMoviesByTitleOrYear(String titleStartsWith, Integer fromYear, Integer toYear) throws
+
+    public List<Movie> findMoviesByTitleOrYear(String titleStartsWith, Integer fromYear, Integer toYear) throws
             InvalidYearRangeException {
         if (fromYear != null && toYear != null && fromYear > toYear) {
             throw new InvalidYearRangeException("invalid year range");
